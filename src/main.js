@@ -10,25 +10,25 @@ import CovidCases from './covidCountry';
 // let deaths = `${API}/history?country=${country}&status=deaths`;
 // let vaccine = `${API}/vaccines?country=${country}`;
 
-
 function getElements(response) {
   if (response.All) {
     $('.showConfirmed').text(`The number of confirmed cases in ${response.All.country} is ${response.All.confirmed}`);
   } else {
-    $('.showErrors').text(`There was an error: ${response}`);
+    $('.showErrors').text(`There was an error: ${response.message}`);
   }
 }
 
-async function makeApiCall() {
+async function makeApiCall(country) {
   const response = await CovidCases.getCases(country);
   getElements(response);
   // const jsonifiedResponse = await response.json();
   // return jsonifiedResponse;
 }
 
-
-
-  $('#countryButton').click(function() {
-    let country = $('#country').val();
-    makeApiCall(country);
-  });
+$(document).ready(function() {
+$('#countryButton').click(function() {
+  let country = $('#country').val();
+  console.log(country);
+  makeApiCall(country);
+});
+});
