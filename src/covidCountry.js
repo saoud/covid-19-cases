@@ -14,7 +14,7 @@
 export default class CovidCases {
   static async getCases(country) {
     try {
-      const response = await fetch(`https://covid-api.mmediagroup.fr/v1/cases?country=${country}`);
+      const response = await fetch(`https://covid-apir.mmediagroup.fr/v1/cases?country=${country}`);
       if (!response.ok) {
         throw Error(response.statusText);
       }
