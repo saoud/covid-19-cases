@@ -23,4 +23,15 @@ export default class CovidCases {
       return error.message;
     }
   }
+  static async getVaccines(country) {
+    try {
+      const vacResponse = await fetch(`https://covid-api.mmediagroup.fr/v1/vaccines?country=${country}`);
+      if (!vacResponse.ok) {
+        throw Error(vacResponse.statusText);
+      }
+      return vacResponse.json();
+    } catch(error) {
+      return error.message;
+    }
+  }
 }
